@@ -1,28 +1,44 @@
 angular.module('starter.controllers', [])
 
-.controller('_todoCtrl', function($scope) {
+.controller('TODOCtrl', function ($scope, $state, Task) {
+
+    $scope.data = Task.data;
+    $scope.newData = "";
+    $scope.addTask = Task.addTask;
+    $scope.deleteTask = Task.deleteTask;
+    $scope.completeTask = Task.completeTask;
+    $scope.getDetails = Task.goDetails;
     
-    $scope.mylist = [1,2,3];
-    
-    $scope.add = function(){
-        
-        $scope.mylist.push($scope.mylist[$scope.mylist.length-1]+1);
-    };
+    /*
+    $scope.getDetails = function () {
+        $state.go('task-details');
+    }*/
+
+})
+
+.controller('NewTaskController', function ($scope, Task) {
+
+    $scope.data = Task.data;
+    $scope.newData = "";
+    $scope.addTask = Task.addTask;
+    $scope.deleteTask = Task.deleteTask;
 
 })
 
 
-.controller('CompletedCtrl', function($scope) {
-    
-    
-    
-    $scope.complete = function(){
-        console.log("Completed");
+
+.controller('CompletedCtrl', function ($scope, $state, Task) {
+
+    $scope.data = Task.data;
+    $scope.getDetails = function () {
+        $state.go('task-details');
     }
-    
-     $scope.delete = function(){
-        console.log("Deleted");
-    }
-    
-    
+
+})
+
+.controller('DetailsCtrl', function ($scope, $state, Task) {
+
+    $scope.data = Task.data;
+    $scope.details = Task.details;
+
 });

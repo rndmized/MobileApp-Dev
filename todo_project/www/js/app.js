@@ -26,7 +26,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
 //Adding $ionicConfigProvider to chande default tabs basr postion
-.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
     //Set tabs bas postition to top
     $ionicConfigProvider.tabs.position('top');
@@ -35,37 +35,54 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
-    $stateProvider
+
+    $stateProvider.state('task-details', {
+            url: '/task-details',
+            templateUrl: 'templates/task-details.html',
+            controller: 'DetailsCtrl'
+    });
 
 
-    // setup an abstract state for the tabs directive
-        .state('tab', {
-        url: '/tab',
-        abstract: true,
-        templateUrl: 'templates/tabs.html'
-    })
+$stateProvider.state('newTask', {
+    url: '/newTask',
+    templateUrl: 'templates/newTask.html',
+    controller: 'NewTaskController'
+});
 
-    // Each tab has its own nav history stack:
+$stateProvider
 
-    .state('tab.TODO', {
-            url: '/TODO',
-            views: {
-                'tab-TODO': {
-                    templateUrl: 'templates/tab-TODO.html',
-                    controller: '_todoCtrl'
-                }
-            }
-        })
-        .state('tab.completed', {
-            url: '/completed',
-            views: {
-                'tab-completed': {
-                    templateUrl: 'templates/tab-completed.html',
-                    controller: 'CompletedCtrl'
-                }
-            }
-        });
 
-    // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/tab/TODO');
+// setup an abstract state for the tabs directive
+.state('tab', {
+    url: '/tab',
+    abstract: true,
+    templateUrl: 'templates/tabs.html'
+})
+
+// Each tab has its own nav history stack:
+
+.state('tab.TODO', {
+    url: '/TODO',
+    views: {
+        'tab-TODO': {
+            templateUrl: 'templates/tab-TODO.html',
+            controller: 'TODOCtrl'
+        }
+    }
+})
+.state('tab.completed', {
+    url: '/completed',
+    views: {
+        'tab-completed': {
+            templateUrl: 'templates/tab-completed.html',
+            controller: 'CompletedCtrl'
+        }
+    }
+
+});
+
+
+
+// if none of the above states are matched, use this as the fallback
+$urlRouterProvider.otherwise('/tab/TODO');
 });

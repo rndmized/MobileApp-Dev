@@ -2,7 +2,14 @@
     <div>
         <h1> Welcome to TODO List </h1>
     </div>
+    
+    <div>
+        <ion-list ng-repeat=" tasks in data.tasks" show-delete="shouldShowDelete">
+            <ion-item on-swipe-left="deleteTask(tasks)" on-swipe-right="completeTask(tasks)" on-tap="getDetails(tasks)">{{ tasks.title }} {{ tasks.added | date}}
+            </ion-item>
+        </ion-list>
+    </div>
     <ion-footer-bar align-title="center">
-        <button class="button button-full button-large icon-center ion-document"></button>
+        <button class="button button-full button-large icon-center ion-document" ui-sref="newTask"></button>
     </ion-footer-bar>
 </ion-view>
