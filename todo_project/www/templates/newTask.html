@@ -1,15 +1,26 @@
 <ion-view view-title="New Task">
-  <ion-content class="padding">
-      <div class="list">
-        <div class="item item-input-inset">
-            <label class="item-input-wrapper">
-                <input type="text" placeholder="Task" ng-model="newTask">
-            </label>
-            <button class="button button-small" ng-click="addTask(newTask)">
-                Add task
-            </button>
+    <ion-content class="padding">
+        <div class="list">
+            <div class="item item-input-inset">
+                <label class="item-input-wrapper">
+                    <input type="text" placeholder="Task" ng-model="title">
+                </label>
+                <button class="button button-small" ng-click="addTask(title, date, notes); goBack()">
+                    Add task
+                </button>
+            </div>
+            <div>
+                <label class="item item-input">
+                    <span class="input-label">Date</span>
+                    <input type="date" ng-model="date">
+                </label>
+            </div>
+            <div>
+                <label class="item item-input">
+                    <textarea rows="15" cols="50" placeholder="Description" ng-model="notes">
+                    </textarea>
+                </label>
+            </div>
         </div>
-
-    </div>
-  </ion-content>
+    </ion-content>
 </ion-view>

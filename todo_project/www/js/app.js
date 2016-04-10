@@ -37,52 +37,54 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     // Each state's controller can be found in controllers.js
 
     $stateProvider.state('task-details', {
-            url: '/task-details',
-            templateUrl: 'templates/task-details.html',
-            controller: 'DetailsCtrl'
+        url: '/task-details',
+        cache: false,
+        templateUrl: 'templates/task-details.html',
+        controller: 'DetailsCtrl'
     });
 
 
-$stateProvider.state('newTask', {
-    url: '/newTask',
-    templateUrl: 'templates/newTask.html',
-    controller: 'NewTaskController'
-});
+    $stateProvider.state('newTask', {
+        url: '/newTask',
+        cache: false,
+        templateUrl: 'templates/newTask.html',
+        controller: 'NewTaskController'
+    });
 
-$stateProvider
-
-
-// setup an abstract state for the tabs directive
-.state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-})
-
-// Each tab has its own nav history stack:
-
-.state('tab.TODO', {
-    url: '/TODO',
-    views: {
-        'tab-TODO': {
-            templateUrl: 'templates/tab-TODO.html',
-            controller: 'TODOCtrl'
-        }
-    }
-})
-.state('tab.completed', {
-    url: '/completed',
-    views: {
-        'tab-completed': {
-            templateUrl: 'templates/tab-completed.html',
-            controller: 'CompletedCtrl'
-        }
-    }
-
-});
+    $stateProvider
 
 
+    // setup an abstract state for the tabs directive
+        .state('tab', {
+        url: '/tab',
+        abstract: true,
+        templateUrl: 'templates/tabs.html'
+    })
 
-// if none of the above states are matched, use this as the fallback
-$urlRouterProvider.otherwise('/tab/TODO');
+    // Each tab has its own nav history stack:
+
+    .state('tab.TODO', {
+            url: '/TODO',
+            views: {
+                'tab-TODO': {
+                    templateUrl: 'templates/tab-TODO.html',
+                    controller: 'TODOCtrl'
+                }
+            }
+        })
+        .state('tab.completed', {
+            url: '/completed',
+            views: {
+                'tab-completed': {
+                    templateUrl: 'templates/tab-completed.html',
+                    controller: 'CompletedCtrl'
+                }
+            }
+
+        });
+
+
+
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/tab/TODO');
 });

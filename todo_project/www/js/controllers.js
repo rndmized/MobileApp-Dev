@@ -8,21 +8,20 @@ angular.module('starter.controllers', [])
     $scope.deleteTask = Task.deleteTask;
     $scope.completeTask = Task.completeTask;
     $scope.getDetails = Task.goDetails;
-    
-    /*
-    $scope.getDetails = function () {
-        $state.go('task-details');
-    }*/
+    $scope.getTask = Task.getTask;
+
 
 })
 
-.controller('NewTaskController', function ($scope, Task) {
+.controller('NewTaskController', function ($scope, $state, Task) {
 
     $scope.data = Task.data;
     $scope.newData = "";
     $scope.addTask = Task.addTask;
     $scope.deleteTask = Task.deleteTask;
-
+    $scope.goBack = function () {
+        $state.go('tab.TODO');
+    }
 })
 
 
@@ -30,9 +29,7 @@ angular.module('starter.controllers', [])
 .controller('CompletedCtrl', function ($scope, $state, Task) {
 
     $scope.data = Task.data;
-    $scope.getDetails = function () {
-        $state.go('task-details');
-    }
+    $scope.getDetails = Task.goDetails;
 
 })
 
@@ -40,5 +37,8 @@ angular.module('starter.controllers', [])
 
     $scope.data = Task.data;
     $scope.details = Task.details;
+     $scope.goBack = function () {
+        $state.$ionicGoBack;
+    }
 
 });

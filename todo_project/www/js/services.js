@@ -6,36 +6,40 @@ angular.module('starter.services', [])
         tasks: [],
         completedTasks: []
     }
-    
+
     var details = {
         title: "title",
         notes: "notes",
         date: new Date()
     }
-    
+
     var goDetails = function (task) {
-        console.log(task);
-        console.log(task.title);
-        console.log(task.added);
         details.title = task.title;
         details.date = task.added;
-        details.notes = "Not yet Implemented";
+        details.notes = task.notes;
         $state.go('task-details');
     }
+    var goBack = function(){
+        $state.goBack;
+    }
 
+ 
 
-    function addTask(title, date) {
+    function addTask(title, date, notes) {
         var task = {
             title: title,
-            added: new Date()
-        };
+            added: date,
+            notes: notes
+        }; 
+        window.localStorage.setItem(title, JSON.stringify(task));
         data.tasks.push(task);
     }
 
     function addCompletedTask(complete_task) {
         var task = {
             title: complete_task.title,
-            added: complete_task.added
+            added: complete_task.added,
+            notes: complete_task.notes
         };
         console.log(complete_task.title);
         console.log(task.title);
@@ -68,6 +72,7 @@ angular.module('starter.services', [])
         deleteTask: deleteTask,
         completeTask: completeTask,
         goDetails: goDetails,
-        details : details
+        details: details,
+        goBack : goBack
     };
 });
