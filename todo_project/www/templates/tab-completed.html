@@ -1,7 +1,7 @@
 <ion-view view-title="Completed">
   <ion-content class="padding">
     <div>
-        <ion-list ng-repeat=" tasks in data.completedTasks">
+        <ion-list ng-repeat=" tasks in data.completedTasks | orderBy: 'added'">
             <ion-item on-tap="getDetails(tasks)">{{ tasks.title }} {{ tasks.added | date}}
             </ion-item>
         </ion-list>

@@ -1,14 +1,37 @@
 angular.module('starter.controllers', [])
 
-.controller('TODOCtrl', function ($scope, $state, Task) {
+.controller('initCtrl', function ($scope, $state, Task) {
+
+    $scope.getTasks = Task.getTasks;
+    $scope.test = Task.test;
+
+})
+
+
+.controller('TODOCtrl', function ($scope, $state, $ionicPopup, Task) {
 
     $scope.data = Task.data;
     $scope.newData = "";
     $scope.addTask = Task.addTask;
-    $scope.deleteTask = Task.deleteTask;
     $scope.completeTask = Task.completeTask;
     $scope.getDetails = Task.goDetails;
     $scope.getTask = Task.getTask;
+    $scope.test = Task.test;
+    $scope.deleteTask = function () {
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Delete Task',
+            template: 'Are you sure you want to delete this Task?'
+        });
+
+        confirmPopup.then(function (res) {
+            if (res) {
+                Task.deleteTask();
+            } else {
+                console.log('Do Nothing');
+            }
+        });
+    };
+
 
 
 })
@@ -18,7 +41,6 @@ angular.module('starter.controllers', [])
     $scope.data = Task.data;
     $scope.newData = "";
     $scope.addTask = Task.addTask;
-    $scope.deleteTask = Task.deleteTask;
     $scope.goBack = function () {
         $state.go('tab.TODO');
     }
@@ -37,7 +59,7 @@ angular.module('starter.controllers', [])
 
     $scope.data = Task.data;
     $scope.details = Task.details;
-     $scope.goBack = function () {
+    $scope.goBack = function () {
         $state.$ionicGoBack;
     }
 
