@@ -1,0 +1,16 @@
+<ion-view>
+    <div class="bar bar-header bar-dark">
+        <h1 class="title">TO DO List</h1>
+    </div>
+    <ion-content class="padding">
+        <div>
+            <ion-list ng-repeat="tasks in data.tasks | orderBy: 'date'">
+                <ion-item on-swipe-left="deleteTask(tasks)" on-swipe-right="completeTask(tasks)" on-tap="getDetails(tasks)">{{ tasks.title }} {{ tasks.added | date}}
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
+    <ion-footer-bar align-title="center">
+        <button class="button button-full button-large icon-center ion-document" ui-sref="newTask"></button>
+    </ion-footer-bar>
+</ion-view>
