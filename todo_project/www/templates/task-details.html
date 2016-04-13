@@ -1,7 +1,12 @@
-<ion-view view-title="Task Details">
-    <button class="button button-icon icon ion-navicon"></button>
-    <ion-content class="padding">
+<ion-view>
+    <ion-content>
         <ion-list>
+            <ion-item class="bar bar-header bar-dark">
+                <div class="bar bar-header bar-dark">
+                    <button class="button icon ion-ios-arrow-back" ng-click="goBack()"></button>
+                    <h1 class="title">Task Details</h1>
+                </div>
+            </ion-item>
             <ion-item>Task: {{ details.title }}</ion-item>
             <ion-item>Date: {{ details.date | date}}</ion-item>
             <ion-item>Notes: {{ details.notes }}</ion-item>

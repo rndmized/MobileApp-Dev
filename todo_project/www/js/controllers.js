@@ -22,7 +22,6 @@ angular.module('starter.controllers', [])
             title: 'Delete Task',
             template: 'Are you sure you want to delete this Task?'
         });
-
         confirmPopup.then(function (res) {
             if (res) {
                 Task.deleteTask();
@@ -59,8 +58,7 @@ angular.module('starter.controllers', [])
 
     $scope.data = Task.data;
     $scope.details = Task.details;
-    $scope.goBack = function () {
-        $state.$ionicGoBack;
+     $scope.goBack = function () {
+        $state.go('tab.TODO');
     }
-
 });
