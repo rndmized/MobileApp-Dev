@@ -1,14 +1,15 @@
 <ion-view>
-    <div class="bar bar-header bar-dark">
+    <ion-header-bar class="bar bar-header bar-dark">
         <h1 class="title">Completed Tasks</h1>
-    </div>
-    <ion-content class="padding">
-
-        <div>
-            <ion-list ng-repeat=" tasks in data.completedTasks | orderBy: 'added'">
-                <ion-item on-tap="getDetails(tasks)" on-swipe-right="deleteCompletedTask(tasks)" on-swipe-left="uncompleteTask(tasks)">{{ tasks.title }} {{ tasks.added | date}}
-                </ion-item>
-            </ion-list>
-        </div>
+    </ion-header-bar>
+    <ion-content>
+        <ion-list>
+            <div>
+                <ion-list ng-repeat=" tasks in data.completedTasks | orderBy: 'added'">
+                    <ion-item on-tap="getDetails(tasks)" on-swipe-right="deleteCompletedTask(tasks)" on-swipe-left="uncompleteTask(tasks)">{{ tasks.title }} {{ tasks.added | date}}
+                    </ion-item>
+                </ion-list>
+            </div>
+        </ion-list>
     </ion-content>
 </ion-view>
